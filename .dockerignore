@@ -1,0 +1,15 @@
+.venv
+venv
+.git
+.env
+bot.db
+bot.db-*
+*.log
+__pycache__
+.pytest_cache
+.mypy_cache
+downloads
+bin
+webapp/node_modules
+webapp/dist
+agent-transcripts
