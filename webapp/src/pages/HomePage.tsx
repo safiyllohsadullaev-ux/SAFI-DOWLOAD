@@ -115,8 +115,8 @@ export function HomePage() {
   const qualities = format === "audio" ? audioQualities : videoQualities;
 
   return (
-    <div className="grid gap-4">
-      <header className="flex items-end justify-between gap-3">
+    <div className="grid gap-4 lg:grid-cols-2 lg:items-start">
+      <header className="flex items-end justify-between gap-3 lg:col-span-2">
         <div>
           <p className="text-xs tracking-wide text-[var(--hint)]">{t("home.kicker")}</p>
           <h1 className="text-[22px] font-semibold">{t("home.title")}</h1>
@@ -126,6 +126,7 @@ export function HomePage() {
         </span>
       </header>
 
+      <div className="grid gap-4">
       <section className="rounded-2xl bg-[var(--card)] p-3 shadow-[var(--shadow)]">
         <label htmlFor="video-url" className="mb-2 block text-sm text-[var(--hint)]">
           {t("home.link")}
@@ -210,6 +211,7 @@ export function HomePage() {
       >
         {t("home.download")}
       </button>
+      </div>
 
       <section className="grid gap-3">
         <div className="flex items-center justify-between">

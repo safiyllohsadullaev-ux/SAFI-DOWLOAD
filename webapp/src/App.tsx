@@ -54,8 +54,8 @@ function Shell() {
   }, [inner, navigate]);
 
   return (
-    <div className="mx-auto min-h-dvh max-w-[480px]">
-      <main className={`px-4 pt-[max(16px,env(safe-area-inset-top))] ${inner ? "pb-8" : "pb-28"}`}>
+    <div className="flex min-h-dvh w-full flex-col">
+      <main className={`mx-auto w-full max-w-6xl flex-1 px-4 pt-[max(16px,env(safe-area-inset-top))] sm:px-6 lg:px-8 ${inner ? "pb-8" : "pb-28"}`}>
         {boot === "loading" ? <div className="h-48 animate-pulse rounded-2xl bg-[var(--card)]" /> : null}
         {boot === "error" ? (
           <div className="grid gap-3 rounded-2xl bg-[var(--card)] p-4 text-center">
