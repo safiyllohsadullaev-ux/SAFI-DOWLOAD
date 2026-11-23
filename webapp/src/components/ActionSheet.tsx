@@ -25,12 +25,12 @@ export function ActionSheet({
     { label: t("history.delete"), icon: Trash2, run: onDelete },
   ];
   return (
-    <div className="fixed inset-0 z-40 grid items-end bg-black/40" onClick={onClose}>
+    <div className="fixed inset-0 z-40 grid items-end bg-black/40 sm:items-center sm:p-6" onClick={onClose}>
       <div
         role="dialog"
         aria-modal="true"
         aria-label={t("history.actions")}
-        className="mx-auto w-full max-w-[480px] rounded-t-2xl bg-[var(--card)] p-3 pb-[max(12px,env(safe-area-inset-bottom))]"
+        className="mx-auto w-full max-w-md rounded-t-2xl bg-[var(--card)] p-3 pb-[max(12px,env(safe-area-inset-bottom))] sm:rounded-2xl sm:pb-3"
         onClick={(event) => event.stopPropagation()}
       >
         <p className="line-clamp-2 px-2 pb-2 text-sm text-[var(--hint)]">{item.title}</p>

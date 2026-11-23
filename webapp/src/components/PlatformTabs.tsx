@@ -15,7 +15,7 @@ export function PlatformTabs({
 }) {
   const { t } = useI18n();
   return (
-    <div className="flex gap-2 overflow-x-auto pb-1" role="tablist">
+    <div className="flex gap-2 overflow-x-auto pb-1 lg:flex-wrap lg:overflow-visible" role="tablist">
       {tabs.map((tab) => {
         const active = tab === value;
         const label = tab === "all" ? t("history.all") : t(`platforms.${tab}`);

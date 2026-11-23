@@ -50,8 +50,8 @@ export function SettingsPage() {
   const qualities: Quality[] = settings.defaultFormat === "audio" ? ["128kbps", "320kbps"] : ["360p", "720p", "1080p"];
 
   return (
-    <div className="grid gap-4">
-      <h1 className="text-[22px] font-semibold">{t("settings.title")}</h1>
+    <div className="grid gap-4 xl:grid-cols-2 xl:items-start">
+      <h1 className="text-[22px] font-semibold xl:col-span-2">{t("settings.title")}</h1>
       <section className="grid gap-3 rounded-2xl bg-[var(--card)] p-4 shadow-[var(--shadow)]">
         <p className="text-sm text-[var(--hint)]">{t("settings.language")}</p>
         <Segmented

@@ -110,5 +110,5 @@
     "hours": "{count} h ago",
     "days": "{count} d ago"
   },
-  "common": { "retry": "Retry", "error": "Something went wrong", "close": "Close", "on": "On", "off": "Off" }
+  "common": { "retry": "Retry", "error": "Something went wrong", "close": "Close", "back": "Back", "on": "On", "off": "Off" }
 }

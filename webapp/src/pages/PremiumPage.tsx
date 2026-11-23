@@ -41,15 +41,15 @@ export function PremiumPage() {
     <div className="grid gap-4">
       <h1 className="text-[22px] font-semibold">{t("premium.title")}</h1>
       <div className="overflow-hidden rounded-2xl bg-[var(--card)] shadow-[var(--shadow)]">
-        <div className="grid grid-cols-3 px-3 py-2 text-sm text-[var(--hint)]">
+        <div className="grid grid-cols-3 gap-2 px-3 py-2 text-sm text-[var(--hint)]">
           <span />
           <span>{t("premium.free")}</span>
           <span>{t("premium.pro")}</span>
         </div>
         {rows.map((row) => (
-          <div key={row[0]} className="grid grid-cols-3 border-t border-[var(--line)] px-3 py-3 text-sm">
+          <div key={row[0]} className="grid grid-cols-3 gap-2 border-t border-[var(--line)] px-3 py-3 text-sm">
             {row.map((cell) => (
-              <span key={cell}>{cell}</span>
+              <span key={cell} className="min-w-0 break-words">{cell}</span>
             ))}
           </div>
         ))}

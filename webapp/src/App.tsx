@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { HashRouter, Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import WebApp from "@twa-dev/sdk";
+import { ChevronLeft } from "lucide-react";
 import { api } from "./api/client";
 import type { ThemeMode } from "./api/types";
-import { BottomNav } from "./components/BottomNav";
+import { BottomNav, SideNav } from "./components/BottomNav";
 import { useTelegram } from "./hooks/useTelegram";
 import { useTheme } from "./hooks/useTheme";
 import { I18nProvider, useI18n } from "./i18n";
@@ -54,28 +55,37 @@ function Shell() {
   }, [inner, navigate]);
 
   return (
-    <div className="flex min-h-dvh w-full flex-col">
-      <main className={`mx-auto w-full max-w-6xl flex-1 px-4 pt-[max(16px,env(safe-area-inset-top))] sm:px-6 lg:px-8 ${inner ? "pb-8" : "pb-28"}`}>
-        {boot === "loading" ? <div className="h-48 animate-pulse rounded-2xl bg-[var(--card)]" /> : null}
-        {boot === "error" ? (
-          <div className="grid gap-3 rounded-2xl bg-[var(--card)] p-4 text-center">
-            <p>{t("common.error")}</p>
-            <button type="button" className="min-h-11 rounded-xl bg-[var(--accent)] text-[var(--accent-text)]" onClick={() => window.location.reload()}>
-              {t("common.retry")}
+    <div className="flex min-h-dvh w-full bg-[var(--bg)]">
+      {boot === "ready" ? <SideNav /> : null}
+      <div className="flex min-h-dvh min-w-0 flex-1 flex-col">
+        <main className={`mx-auto w-full max-w-6xl flex-1 px-4 pt-[max(12px,env(safe-area-inset-top))] sm:px-6 lg:max-w-none lg:px-8 xl:px-10 ${inner ? "pb-8" : "pb-28 lg:pb-8"}`}>
+          {boot === "loading" ? <div className="h-48 animate-pulse rounded-2xl bg-[var(--card)]" /> : null}
+          {boot === "error" ? (
+            <div className="mx-auto grid w-full max-w-md gap-3 rounded-2xl bg-[var(--card)] p-4 text-center">
+              <p>{t("common.error")}</p>
+              <button type="button" className="min-h-11 rounded-xl bg-[var(--accent)] text-[var(--accent-text)]" onClick={() => window.location.reload()}>
+                {t("common.retry")}
+              </button>
+            </div>
+          ) : null}
+          {boot === "ready" && inner ? (
+            <button type="button" className="mb-3 inline-flex min-h-11 items-center gap-1 text-sm" onClick={() => navigate("/profile")}>
+              <ChevronLeft size={20} />
+              {t("common.back")}
             </button>
-          </div>
-        ) : null}
-        {boot === "ready" ? (
-          <Routes>
-            <Route index element={<HomePage />} />
-            <Route path="history" element={<HistoryPage />} />
-            <Route path="profile" element={<ProfilePage />} />
-            <Route path="settings" element={<SettingsPage />} />
-            <Route path="premium" element={<PremiumPage />} />
-            <Route path="referral" element={<ReferralPage />} />
-          </Routes>
-        ) : null}
-      </main>
+          ) : null}
+          {boot === "ready" ? (
+            <Routes>
+              <Route index element={<HomePage />} />
+              <Route path="history" element={<HistoryPage />} />
+              <Route path="profile" element={<ProfilePage />} />
+              <Route path="settings" element={<SettingsPage />} />
+              <Route path="premium" element={<PremiumPage />} />
+              <Route path="referral" element={<ReferralPage />} />
+            </Routes>
+          ) : null}
+        </main>
+      </div>
       {boot === "ready" && !inner ? <BottomNav /> : null}
     </div>
   );

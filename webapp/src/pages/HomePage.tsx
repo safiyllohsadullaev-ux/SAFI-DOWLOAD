@@ -115,13 +115,13 @@ export function HomePage() {
   const qualities = format === "audio" ? audioQualities : videoQualities;
 
   return (
-    <div className="grid gap-4 lg:grid-cols-2 lg:items-start">
-      <header className="flex items-end justify-between gap-3 lg:col-span-2">
+    <div className="grid w-full gap-4 lg:grid-cols-2 lg:items-start lg:gap-6">
+      <header className="flex flex-wrap items-end justify-between gap-3 lg:col-span-2">
         <div>
           <p className="text-xs tracking-wide text-[var(--hint)]">{t("home.kicker")}</p>
           <h1 className="text-[22px] font-semibold">{t("home.title")}</h1>
         </div>
-        <span className="rounded-full bg-[var(--card)] px-3 py-2 text-sm shadow-[var(--shadow)]">
+        <span className="shrink-0 rounded-full bg-[var(--card)] px-3 py-2 text-sm shadow-[var(--shadow)]">
           {t("home.limit", { used: profile?.dailyUsed ?? 0, limit: profile?.dailyLimit ?? 5 })}
         </span>
       </header>

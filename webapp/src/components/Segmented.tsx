@@ -20,7 +20,7 @@ export function Segmented<T extends string>({
             role="radio"
             aria-checked={active}
             onClick={() => onChange(option.value)}
-            className={`min-h-11 flex-1 rounded-xl px-3 text-sm ${
+            className={`min-h-11 min-w-0 flex-1 rounded-xl px-2 text-center text-sm leading-tight sm:px-3 ${
               active ? "bg-[var(--accent)] text-[var(--accent-text)]" : "bg-[var(--bg)]"
             }`}
           >

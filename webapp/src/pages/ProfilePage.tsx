@@ -74,15 +74,16 @@ export function ProfilePage() {
           [t("profile.week"), String(stats.week)],
           [t("profile.size"), formatSize(stats.sizeBytes)],
         ].map(([label, value]) => (
-          <div key={label} className="rounded-2xl bg-[var(--card)] p-3 shadow-[var(--shadow)]">
+          <div key={label} className="min-w-0 rounded-2xl bg-[var(--card)] p-3 shadow-[var(--shadow)]">
             <p className="text-xs text-[var(--hint)]">{label}</p>
-            <p className="mt-1 font-semibold">{value}</p>
+            <p className="mt-1 truncate font-semibold">{value}</p>
           </div>
         ))}
       </section>
 
+      <div className="grid gap-4 lg:grid-cols-2">
       <section className="rounded-2xl bg-[var(--card)] p-4 shadow-[var(--shadow)]">
-        <div className="mb-2 flex justify-between text-sm">
+        <div className="mb-2 flex justify-between gap-3 text-sm">
           <span>{t("profile.limit")}</span>
           <span>
             {profile.dailyUsed}/{profile.dailyLimit}
@@ -109,13 +110,16 @@ export function ProfilePage() {
           );
         })}
       </section>
+      </div>
 
+      <div className="grid gap-3 sm:grid-cols-2">
       <button type="button" className="min-h-12 rounded-2xl bg-[var(--accent)] font-semibold text-[var(--accent-text)]" onClick={() => { haptic(); navigate("/premium"); }}>
         {t("profile.getPremium")}
       </button>
       <button type="button" className="min-h-12 rounded-2xl bg-[var(--card)] shadow-[var(--shadow)]" onClick={() => { haptic(); navigate("/referral"); }}>
         {t("profile.invite")}
       </button>
+      </div>
     </div>
   );
 }

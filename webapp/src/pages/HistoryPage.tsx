@@ -98,9 +98,11 @@ export function HistoryPage() {
       {groups.map((group) => (
         <section key={group.key} className="grid gap-2">
           <h2 className="text-sm text-[var(--hint)]">{t(`history.${group.key}`)}</h2>
-          {group.items.map((item) => (
-            <VideoCard key={item.id} item={item} onOpen={setActive} />
-          ))}
+          <div className="grid gap-2 md:grid-cols-2">
+            {group.items.map((item) => (
+              <VideoCard key={item.id} item={item} onOpen={setActive} />
+            ))}
+          </div>
         </section>
       ))}
       {history.hasMore ? (

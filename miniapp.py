@@ -21,7 +21,9 @@ _runner: web.AppRunner | None = None
 _tunnel: subprocess.Popen | None = None
 _public_url: str | None = None
 _watch_task: asyncio.Task | None = None
-_URL_RE = re.compile(r"https://[a-z0-9-]+\.trycloudflare\.com")
+# api.trycloudflare.com is Cloudflare's own API host. Opening it shows
+# {"code":10005,"message":"Method Not Allowed"}, so it must never be the Mini App URL.
+_URL_RE = re.compile(r"https://(?!api\.)[a-z0-9-]+\.trycloudflare\.com")
 
 
 def _cloudflared_path() -> Path | None:
